@@ -3,4 +3,6 @@ class Topic < ApplicationRecord
     validates :user_id, uniqueness: true
 
     has_many :comments
+
+    belongs_to :user, :section
 end
