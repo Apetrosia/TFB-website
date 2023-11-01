@@ -6,7 +6,9 @@ ruby "3.2.2"
 gem "rails", "~> 7.0.4"
 
 #gem "factory_bot_rails"
-gem 'factory_bot_rails'
+gem "factory_bot_rails"
+
+#gem "rake", "~> 13.1.0"
 
 #gem "foreman", "~> 0.87.2"
 
