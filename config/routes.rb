@@ -8,6 +8,42 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "home#index"
 
+  # resources :registrations
+
+  get  "/registration", to: "registration#new"
+  post "/registration", to: "registration#create"
+
+  get  "/registration/edit", to: "registration#edit"
+  post "registration/new_password", to: "registration#update"
+
+  get  "/email_verification", to: "email#new" # ?
+  post "/email_verification", to: "email#create"
+  get  "/email_verification/success", to: "email#show"
+
+  get    "/auth", to: "auth#new"
+  post   "/auth", to: "auth#create"
+  delete "/auth", to: "auth#destroy"
+
+  get "/user/:id", to: "personal_cabinet#index"
+
+=begin
+  resources :cabinets do
+    resources :photos
+  end
+=end
+
+  get  "/user/:id/photo/new", to: "photo#new"
+  post "/user/:id/photo/new", to: "photo#update"
+
   get "/forum", to: "forum#index"
+
+  get "/info", to: "info#index"
+
+  get "/support", to: "support#index"
+
+  # will be implemented later
+  get "/news", to: "news#index"
+  get "/wiki", to: "wiki#index"
+
 
 end
