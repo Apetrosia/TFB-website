@@ -36,3 +36,5 @@
 .env
 .idea
 .parcel-cache
+/app/assets/builds/*
+!/app/assets/builds/.keep
