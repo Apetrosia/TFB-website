@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :registrations
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -13,12 +14,11 @@ Rails.application.routes.draw do
   get  "/registration", to: "registration#new"
   post "/registration", to: "registration#create"
 
-  get  "/registration/edit", to: "registration#edit"
+  get  "/registration/edit", to: "registration#edit" # for new password UI
   post "registration/new_password", to: "registration#update"
 
-  get  "/email_verification", to: "email#new" # ?
-  post "/email_verification", to: "email#create"
-  get  "/email_verification/success", to: "email#show"
+  get  "/email_verification", to: "email#new" # for email verification UI
+  post "/email_verification", to: "email#create" # for button "verify"
 
   get    "/auth", to: "auth#new"
   post   "/auth", to: "auth#create"
