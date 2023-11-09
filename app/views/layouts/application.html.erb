@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full">
   <head>
     <title>TheFirstBogatyr</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -9,8 +9,8 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="flex h-full flex-col min-h-screen w-screen">
+    <main class="container mx-auto flex flex-col ">
       <%= yield %>
     </main>
   </body>
