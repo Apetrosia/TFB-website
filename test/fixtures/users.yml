@@ -1,0 +1,17 @@
+darya:
+  login: darya2003
+  email: darya2003@gnail.com
+  password: 00000
+  banned: false
+
+bear:
+  login: golden_bear
+  email: joldenfred@gmail.com
+  password: 1987
+  banned: false
+
+vanya:
+  login: vannie
+  email: vunny@gmail.com
+  password: 204832
+  banned: true
