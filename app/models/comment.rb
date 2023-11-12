@@ -3,5 +3,6 @@ class Comment < ApplicationRecord
 
     has_many :likes
 
-    belongs_to :user, :topic
+    belongs_to :user
+    belongs_to :topic
 end
