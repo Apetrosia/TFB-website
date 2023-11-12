@@ -4,9 +4,19 @@ class AuthController < ApplicationController
 
   def create
     # validate input
-    user = User.find_by(email: params[:email])&.authenticate(params[:password])
-    if user
-      redirect_to root_path
+    params = user_params # for tests
+    user = User.find_by(login: params[:login])
+    # TODO: исправить на Ruby style :)
+    unless user
+      # сообщение о неправильном логине
+    else
+      user = user.authenticate(params[:password])
+      unless user
+      # сообщение о неправильном пароле
+      else
+        # смена кнопки с Войти на Выйти
+        redirect_to root_path
+      end
     end
   end
 
@@ -15,6 +25,6 @@ class AuthController < ApplicationController
 
 private
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:login, :email, :password)
   end
 end

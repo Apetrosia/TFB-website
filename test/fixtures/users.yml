@@ -1,29 +1,29 @@
 bob:
   login: Bob1975
   email: bob@example.com
-  password: 1234
+  password_digest: <%= BCrypt::Password.create('1234') %>
   banned: false
 
 tom:
   login: Tom2004
   email: tom@example.com
-  password: 12345
+  password_digest: <%= BCrypt::Password.create('12345') %>
   banned: false
 
 darya:
   login: darya2003
   email: darya2003@gmail.com
-  password: 00000
+  password_digest: <%= BCrypt::Password.create('00000') %>
   banned: false
 
 bear:
   login: golden_bear
   email: joldenfred@gmail.com
-  password: 1987
+  password_digest: <%= BCrypt::Password.create('1987') %>
   banned: false
 
 vanya:
   login: vannie
   email: vunny@gmail.com
-  password: 204832
+  password_digest: <%= BCrypt::Password.create('204832') %>
   banned: true
