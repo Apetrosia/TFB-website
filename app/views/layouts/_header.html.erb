@@ -1,0 +1,34 @@
+<div class="mx-0 w-screen p-0 ml-0">
+  <nav class=" bg-yellow-950">
+    <div class="flex justify-between ">
+      <div class="flex items-center">
+        <a href="/">
+          <%= image_tag 'logo_redbread.png', size: "250" %>
+        </a>
+      </div>
+      <div class="flex justify-end">
+        <div class="flex m-4 text-xl text-white font-bold  hover:underline-offset-0">
+          <a href="/news" class="relative m-4 hover:text-gray-500 hover:underline-offset-8 ">Новости</a>
+          <a href="/wiki" class="relative hover:text-gray-500 m-4">Вики</a>
+          <a href="/forum" class="relative hover:text-gray-500  m-4">Форум</a>
+          <a href="/info" class="relative hover:text-gray-500 m-4" >О нас</a>
+          <a href="/support" class="relative hover:text-gray-500 m-4">Обратная связь</a>
+        </div>
+        <div class="flex items-center justify-end m-4">
+          <%- if true then %>
+                <%#= image_tag 'img.png', size: 30 %>
+            <a href="/registration" class="items-center">
+              <%= image_tag 'img.png', size: 40  %>
+            </a>
+          <% else  %>
+            <form action="">
+              <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                Выйти
+              </button>
+            </form>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
