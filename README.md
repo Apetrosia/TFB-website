@@ -1,3 +1,9 @@
+## Features:
+
+- Authorization
+- Forum
+- Bag-report
+
 ## Running in development
 
 Dependencies:
