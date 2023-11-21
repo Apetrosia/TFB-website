@@ -1,2 +1,31 @@
-<h1>Email#new</h1>
-<p>Find me in app/views/email/new.html.erb</p>
+<!--<h1>Email#new</h1>-->
+<!--<p>Find me in app/views/email/new.html.erb</p>-->
+
+<div class="flex mt-20 min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <h6 class="mt-24 text-3xl font-bold text-center justify-center leading-9 ">
+      Восстановление пароля
+    </h6>
+  </div>
+
+  <form action="#" method="post" class="flex space-y-6 justify-center mt-5">
+    <div class="flex-col justify-center">
+
+      <div class="flex justify-center">
+        <label for="email" class="font-medium"></label>
+        <div class="mt-1.5 flex justify-center">
+          <input id="email" name="email" class="w-full rounded-md" placeholder="Введите почту" type="email">
+        </div>
+      </div>
+
+      <div class="relative mx-auto text-center justify-center mt-7">
+        <form accept-charset="UTF-8" action="/email_verification" method="post">
+          <button type="submit" class="bg-green-600  px-10 py-1 text-white font-medium mx-1 rounded-md">
+            Отправить код подтверждения на почту
+          </button>
+        </form>
+      </div>
+    </div>
+  </form>
+
+</div>
