@@ -2,9 +2,9 @@ require "test_helper"
 
 class TopicTest < ActiveSupport::TestCase
 
-  def test_should_not_save_user_without_params
+  def test_should_not_save_without_params
     topic = Topic.new
-    assert_not topic.save, "Saved user without params"
+    assert_not topic.save, "Saved topic without params"
   end
 
   def test_one_user_can_create_multiple_topics
