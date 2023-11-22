@@ -6,6 +6,11 @@ class SectionTest < ActiveSupport::TestCase
     assert_not section.save, "Saved section without params"
   end
 
+  def test_has_id
+    section = Section.create(title: "test")
+    assert_not_nil section.id, "Doesn't have id"
+  end
+
   def test_can_create_section
     section = Section.new(title: "test")
     assert section.save, "Can't create a section"

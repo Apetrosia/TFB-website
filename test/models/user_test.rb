@@ -9,7 +9,7 @@ class UserTest < ActiveSupport::TestCase
 
   def test_has_id
     user = User.create(login: "test", email: "test", password_digest: "test")
-    assert_not_nil user.id
+    assert_not_nil user.id, "Doesn't have id"
   end
 
   def test_can_be_banned
