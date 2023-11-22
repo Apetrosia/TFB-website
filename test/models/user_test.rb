@@ -52,7 +52,7 @@ class UserTest < ActiveSupport::TestCase
   def test_can_have_many_comments
     user = User.create(login: "test", email: "test@test.test", password_digest: "test")
     assert_empty user.comments, "Comments are not empty"
-    user.comments.create(title: "test")
+    user.comments.create(text: "test")
     assert_equal 1, user.comments.size, "Does not create comment"
   end
 
