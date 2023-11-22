@@ -3,32 +3,25 @@ class RegistrationController < ApplicationController
     
   end
 
-  def create    
-    user = User.find_by(login:params[:login])
-    if (user)
-      #todo отослать сигнал во view
-      puts "user login"
-    end
+  def create
+    params = user_params
 
-    email = User.find_by(email:params[:email])
-    if (email)
-      #todo отослать сигнал во view
-      puts "user email"
-    end
-    
     new_user = User.new
     new_user.login = params[:login]
     new_user.email = params[:email]
     new_user.password = params[:password]
+    new_user.banned = false
     new_user.password_confirmation = params[:password_confirmation] 
-    new_user.save
 
-    if (!new_user.valid?)
-      #todo отослать сигнал во view
-      puts "new_user invalid"
+    if new_user.save
+      # session[:current_user] = user.id
+      redirect_to email_verification_path
+    else
+      gen_text_for_errors(new_user.errors)
+      redirect_to registration_path
     end
 
-    redirect_to email_verification_path
+
   end
 
   def edit
@@ -42,4 +35,20 @@ class RegistrationController < ApplicationController
     params.require(:user).permit(:login, :email, :password, :password_confirmation)
   end
 
+  def gen_text_for_errors(errors)
+    @errors_map = {}
+
+    errors.each do |error|
+      case error.type
+      when :taken
+        @errors_map[:login_error] = "Такой логин уже занят" if error.attribute == :login
+        @errors_map[:email_error] = "Такой email уже занят" if error.attribute == :email
+      when :invalid
+        @errors_map[:email_error] = "Введен некорректный email" if error.attribute == :email
+      else
+        puts "Необработанная ошибка ввода"
+      end
+
+    end
+  end
 end
