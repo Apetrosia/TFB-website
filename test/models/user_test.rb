@@ -7,6 +7,25 @@ class UserTest < ActiveSupport::TestCase
     assert_not user.save, "Saved user without params"
   end
 
+  def test_has_id
+    user = User.create(login: "test", email: "test", password: "test")
+    assert_not_nil user.id
+  end
+
+  def test_can_be_banned
+    user = User.create(login: "test", email: "test", password: "test")
+    assert_not user.banned?, "Initializes new user as banned"
+    user.update(banned: true)
+    assert user.banned?, "Can't ban user"
+  end
+
+  # def test_can_be_admin
+  #   user = User.create(login: "test", email: "test", password: "test")
+  #   assert_not user.admin?, "Initializes new user as admin"
+  #   user.update(admin: true)
+  #   assert user.admin?, "Can't make user an admin"
+  # end
+
   def test_should_not_save_not_unique_login
     user1 = User.new(login: "test1", email: "test1@test.test", password: "test1")
     user2 = User.new(login: "test2", email: "test2@test.test", password: "test2")
