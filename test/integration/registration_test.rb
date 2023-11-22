@@ -87,7 +87,6 @@ class RegistrationTest < ActionDispatch::IntegrationTest
   def register(login, email, pass, confirmation = pass)
     open_session do |sess|
       sess.extend(RegistrationAssertions)
-
       sess.post registration_path, params: { user: { login: login, email: email, password: pass, password_confirmation: confirmation }}
     end
   end
