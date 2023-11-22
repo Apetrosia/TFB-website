@@ -93,11 +93,10 @@ class RegistrationTest < ActionDispatch::IntegrationTest
   def confirm_email(sess, email)
     sess.post email_verification_path, params: { email: email }
   end
-
+  
   def log_in(user_tag:, login: users(user_tag).login, pass:)
     open_session do |sess|
       sess.extend(RegistrationAssertions)
-
       sess.post auth_path, params: { user: { login: login,
                                              password: pass } }
     end
