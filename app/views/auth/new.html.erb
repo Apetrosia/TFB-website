@@ -1,39 +1,9 @@
-<!--<h1>Auth#new</h1>-->
-<!--<p>Find me in app/views/auth/new.html.erb</p>-->
-
 <div class="flex mt-20 min-h-full flex-col justify-center px-6 py-12 lg:px-8">
   <div class="sm:mx-auto sm:w-full sm:max-w-sm">
     <h6 class="mt-10 text-3xl font-bold text-center justify-center leading-9 ">
       Вход
     </h6>
   </div>
-
-<!--  <form action="#" method="post" class="flex space-y-6 justify-center mt-10">-->
-<!--    <div class="flex-col justify-center">-->
-<!--      <div class="flex-row">-->
-<!--        <label for="email" class="font-medium" > Почта </label>-->
-<!--        <div class="mt-1.5">-->
-<!--          <input id="email" name="email" class="rounded-md" placeholder="Введите почту" type="email"  >-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="flex-row mt-4">-->
-<!--        <label for="password" class="font-medium"> Пароль </label>-->
-<!--        <div class="mt-1.5">-->
-<!--          <input id="password" name="password" class="rounded-md " placeholder="Введите пароль" type="password"  >-->
-<!--        </div>-->
-<!--        <a href="/email_verification" class="text-left text-gray-500 justify-start mt-2 hover:text-gray-800 hover:underline">-->
-<!--          Забыли пароль?-->
-<!--        </a>-->
-<!--      </div>-->
-<!--      <form accept-charset="UTF-8" action="/auth" method="post">-->
-<!--        <div class="mx-auto  text-center justify-center mt-7">-->
-<!--          <button type="submit" class="bg-green-600  px-10 py-1 text-white font-medium mx-1 rounded-md">-->
-<!--            Войти-->
-<!--          </button>-->
-<!--        </div>-->
-<!--      </form>-->
-<!--    </div>-->
-<!--  </form>-->
 
   <div class="flex space-y-6 justify-center mt-10">
     <%= form_for :user, url: '/auth' do |f| %>
@@ -42,7 +12,6 @@
           <label for="login" class="font-medium"> Почта </label>
           <div class="mt-1.5">
             <input id="login" name="[user]login" placeholder="Введите почту" type="text" class="rounded-md">
-            <!-- <%= text_field_tag 'user[login]' %> -->
           </div>
         </div>
 
