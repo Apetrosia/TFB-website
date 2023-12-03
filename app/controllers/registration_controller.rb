@@ -1,6 +1,7 @@
 class RegistrationController < ApplicationController
+
+
   def new
-    
   end
 
   def create
@@ -14,11 +15,11 @@ class RegistrationController < ApplicationController
     new_user.password_confirmation = params[:password_confirmation] 
 
     if new_user.save
-      session[:user_id] = user.id # comment this when testing
+      session[:user_id] = new_user.id # comment this when testing
       redirect_to email_verification_path
     else
       gen_text_for_errors(new_user.errors)
-      redirect_to registration_path
+      render :new
     end
 
   end
@@ -35,17 +36,16 @@ class RegistrationController < ApplicationController
   end
 
   def gen_text_for_errors(errors)
-    @errors_map = {}
 
     errors.each do |error|
       case error.type
       when :taken
-        @errors_map[:login_error] = "Такой логин уже занят" if error.attribute == :login
-        @errors_map[:email_error] = "Такой email уже занят" if error.attribute == :email
+        flash.now[:error] = "Такой логин уже занят" if error.attribute == :login
+        flash.now[:error] = "Такой email уже занят" if error.attribute == :email
       when :invalid
-        @errors_map[:email_error] = "Введен некорректный email" if error.attribute == :email
+        flash.now[:error] = "Введен некорректный email" if error.attribute == :email
       else
-        puts "Необработанная ошибка ввода"
+        raise "Необработанная ошибка ввода"
       end
 
     end
