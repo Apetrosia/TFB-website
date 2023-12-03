@@ -4,12 +4,15 @@
       Вход
     </h6>
   </div>
-
+  
+  <%- if flash.any? %>
+    <%= render 'layouts/alert', locals: flash[:error] %>
+  <% end %>
   <div class="flex space-y-6 justify-center mt-10">
     <%= form_for :user, url: '/auth' do |f| %>
       <div class="flex-col justify-center">
         <div class="flex-row">
-          <label for="login" class="font-medium"> Почта </label>
+          <label for="login" class="font-medium"> Логин или почта </label>
           <div class="mt-1.5">
             <input id="login" name="[user]login" placeholder="Введите почту" type="text" class="rounded-md">
           </div>

@@ -7,25 +7,19 @@
       Восстановление пароля
     </h6>
   </div>
-
-  <form action="#" method="post" class="flex space-y-6 justify-center mt-5">
-    <div class="flex-col justify-center">
-
-      <div class="flex justify-center">
-        <label for="email" class="font-medium"></label>
-        <div class="mt-1.5 flex justify-center">
-          <input id="email" name="email" class="w-full rounded-md" placeholder="Введите почту" type="email">
+  <div class="flex space-y-6 justify-center mt-5">
+    <%= form_for :email, url: '/email_verification' do |f| %>
+    <div>
+      <div class="flex w-full px-6 justify-center">
+        <label for="email"></label>
+        <div class="mt-1.5 w-full flex justify-center">
+          <input id="email" name="[email]email" placeholder="Введите почту" type="email" class="w-full focus:ring-pale-yellow focus:border-pale-yellow active:ring-pale-yellow active:border-pale-yellow active:ring-1 focus:ring-1 rounded-md">
         </div>
       </div>
-
-      <div class="relative mx-auto text-center justify-center mt-7">
-        <form accept-charset="UTF-8" action="/email_verification" method="post">
-          <button type="submit" class="bg-green-600  px-10 py-1 text-white font-medium mx-1 rounded-md">
-            Отправить код подтверждения на почту
-          </button>
-        </form>
+      <div class="relative mx-auto  text-center justify-center mt-7">
+        <%= submit_tag 'Отправить код подтверждения на почту', class: "hover:bg-green-700 bg-green-600  px-10 py-1 text-white font-medium mx-1 rounded-md" %>
       </div>
     </div>
-  </form>
-
+    <% end %>
+  </div>
 </div>
