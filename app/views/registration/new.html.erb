@@ -9,8 +9,8 @@
     <div class="">
       <p class="text-xl">error</p>
     </div>
-  <#%= render 'layouts/alert', locals: flash[:error] %> -->
-  <#%= flash[:error] %> -->
+  <%= render 'layouts/alert', locals: flash[:error] %> -->
+  <%= flash[:error] %> -->
   <% end %>
   <div class="flex space-y-6 justify-center mt-5">
     <%= form_for :user, url: '/registration' do |f| %>
