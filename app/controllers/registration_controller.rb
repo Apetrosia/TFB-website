@@ -15,7 +15,7 @@ class RegistrationController < ApplicationController
     new_user.password_confirmation = params[:password_confirmation] 
 
     if new_user.save
-      session[:user_id] = new_user.id # comment this when testing
+      session[:user_id] = new_user.id
       redirect_to email_verification_path
     else
       gen_text_for_errors(new_user.errors)
