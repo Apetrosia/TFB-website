@@ -18,7 +18,7 @@ darya:
 
 bear:
   login: golden_bear
-  email: joldenfred@gmail.com
+  email: goldenfred@gmail.com
   password_digest: <%= BCrypt::Password.create('1987') %>
   banned: false
 
