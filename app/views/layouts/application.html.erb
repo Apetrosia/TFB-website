@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html class="h-full">
-  <head>
+  <head >
     <title>TheFirstBogatyr</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="shortcut icon" href="icon_bread.jpg">
+    <% if Rails.env == "development" %>
+      <script src="https://cdn.tailwindcss.com"></script>
+    <% end %>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
-
-  <body class="flex h-full flex-col min-h-screen w-screen">
-    <main class="container mx-auto flex flex-col ">
+  <body class="flex flex-col min-h-screen ">
       <%= yield %>
-    </main>
   </body>
 </html>
