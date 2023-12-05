@@ -1,2 +1,79 @@
-<h1>Registration#new</h1>
-<p>Find me in app/views/registration/new.html.erb</p>
+<div class="flex mt-20 min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <h6 class="flex mt-6 text-3xl font-bold text-center justify-center leading-9 ">
+      Регистрация
+    </h6>
+  </div>
+
+  <%- if flash[:error] %>
+    <div class="">
+      <p class="text-xl">error</p>
+    </div>
+  <%= render 'layouts/alert', locals: flash[:error] %> -->
+  <%= flash[:error] %> -->
+  <% end %>
+  <div class="flex space-y-6 justify-center mt-5">
+    <%= form_for :user, url: '/registration' do |f| %>
+      <div class="flex-col items-center justify-center">
+
+        <div class="flex justify-center">
+          <div class="flex-row justify-center">
+            <label for="login" class="font-medium">
+              Логин
+            </label>
+            <div class="mt-1.5">
+              <input id="login" name="[user]login" placeholder="Введите почту" type="text" class="rounded-md">
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-center">
+          <div class="flex-row justify-center mt-4">
+            <label for="email" class="font-medium">
+              Почта
+            </label>
+            <div class=" mt-1.5">
+              <input id="email" name="[user]email" placeholder="Введите почту" type="email" class="rounded-md " >
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-center">
+          <div class=" justify-center  flex-row  mt-4">
+            <div>
+              <label for="password" class="font-medium">
+                Пароль
+              </label>
+            </div>
+            <div class="mt-1.5">
+              <input id="password" name="[user]password" class="rounded-md " placeholder="Введите пароль" type="password"  >
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-center">
+          <div class="flex-row  justify-center  mt-4">
+            <label for="password_confirmation" class="font-medium">
+              Повтор пароля
+            </label>
+            <div class="mt-1.5">
+              <input id="password_confirmation" name="[user]password_confirmation" class="rounded-md " placeholder="Введите повтор пароля" type="password"  >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-center mt-5">
+        <%= submit_tag 'Зарегистрироваться', class: "bg-green-600 flex justify-center mt-3 px-10 py-1 text-white font-medium mx-1 rounded-md" %>
+      </div>
+    <%end %>
+  </div>
+
+  <div class="flex justify-center">
+    <div class="flex flex-col justify-center m-4">
+      <a href="/auth" class=" text-gray-500  hover:underline hover:text-gray-800">
+        Уже есть учётная запись? Войти!
+      </a>
+    </div>
+  </div>
+</div>

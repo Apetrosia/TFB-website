@@ -2,3 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+.bg-img {
+    background-image: url("background.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: darkseagreen;
+}

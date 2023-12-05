@@ -3,21 +3,28 @@ class AuthController < ApplicationController
   end
 
   def create
-    # validate input
-    params = user_params # for tests
-    user = User.find_by(login: params[:login])
-    # TODO: исправить на Ruby style :)
+    params = user_params
+
+    user = nil
+    if params[:login]
+      user = User.find_by(login: params[:login])
+    elsif params[:email]
+      user = User.find_by(login: params[:email])
+    end
+
     unless user
-      # сообщение о неправильном логине
+      gen_text_for_errors(:login)
+      render :new
     else
       user = user.authenticate(params[:password])
       unless user
-      # сообщение о неправильном пароле
-      else
-        # смена кнопки с Войти на Выйти
-        redirect_to root_path
+        gen_text_for_errors(:password)
+        render :new
       end
     end
+
+    session[:user_id] = user.id if user
+    redirect_to root_path if user
   end
 
   def destroy
@@ -27,4 +34,12 @@ private
   def user_params
     params.require(:user).permit(:login, :email, :password)
   end
+
+    def gen_text_for_errors(error_cause)
+
+      flash.now[:error] = "Введен несуществующий логин" if error_cause == :login
+      flash.now[:error] = "Введен неверный пароль" if error_cause == :password
+
+    end
+
 end
