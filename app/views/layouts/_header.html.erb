@@ -15,7 +15,7 @@
           <a href="/support" class="relative hover:text-white m-4">Обратная связь</a>
         </div>
         <div class="flex items-center justify-end m-4">
-          <%- if true then %>
+          <%- if current_user.present? %>
             <a href="/user/:id" class="items-center">
               <%= image_tag 'funny_ded.png', size: 40  %>
             </a>

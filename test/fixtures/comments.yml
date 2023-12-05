@@ -1,0 +1,19 @@
+comm1:
+  title: "comm1"
+  user_id: 1
+  like_count: 0
+
+comm2:
+  title: comm2
+  user_id: 2
+  like_count: 1
+  prt_cmt_id: 1
+
+comm3:
+  title: comm3
+  user_id: 1
+  like_count: 2
+
+comm4:
+
+comm5:
