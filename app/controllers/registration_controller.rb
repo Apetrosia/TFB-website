@@ -8,7 +8,7 @@ class RegistrationController < ApplicationController
   def create
     params = user_params
 
-    new_user = User.new
+    new_user = User.create(user_params)
     new_user.login = params[:login]
     new_user.email = params[:email]
     new_user.password = params[:password]
