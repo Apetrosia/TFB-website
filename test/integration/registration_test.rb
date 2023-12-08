@@ -78,12 +78,16 @@ class RegistrationTest < ActionDispatch::IntegrationTest
 
   end
 
-  def register(login, email, pass)
+  def register(login, email, pass, confirmation = pass)
     open_session do |sess|
       sess.extend(RegistrationAssertions)
       sess.get registration_path
       assert_equal 200, sess.status
-      sess.post registration_path, params: { login: login, email: email, password: pass} # подтверждение пароля можно проверить во view
+      sess.post registration_path,
+                params: { user: { login: login,
+                                  email: email,
+                                  password: pass,
+                                  password_confirmation: confirmation }}
     end
   end
 
