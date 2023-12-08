@@ -5,8 +5,6 @@ class AuthController < ApplicationController
   def create
     params = user_params
 
-    @errors_map = {}
-
     user = nil
     if params[:login]
       user = User.find_by(login: params[:login])
@@ -14,11 +12,15 @@ class AuthController < ApplicationController
       user = User.find_by(login: params[:email])
     end
 
-    gen_text_for_errors(:login) unless user
-
-    if user
+    unless user
+      gen_text_for_errors(:login)
+      render :new
+    else
       user = user.authenticate(params[:password])
-      gen_text_for_errors(:password) unless user
+      unless user
+        gen_text_for_errors(:password)
+        render :new
+      end
     end
 
     session[:user_id] = user.id if user
@@ -35,8 +37,8 @@ private
 
     def gen_text_for_errors(error_cause)
 
-      @errors_map[:login_error] = "Введен несуществующий логин" if error_cause == :login
-      @errors_map[:password_error] = "Введен неверный пароль" if error_cause == :password
+      flash.now[:error] = "Введен несуществующий логин" if error_cause == :login
+      flash.now[:error] = "Введен неверный пароль" if error_cause == :password
 
     end
 
