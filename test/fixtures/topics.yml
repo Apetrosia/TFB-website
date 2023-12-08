@@ -15,3 +15,9 @@ topic3:
   user_id: 2
   content: "content 3"
   section_id: 2
+
+topic4:
+  title: t4
+  user_id: 3
+  content: "content 3"
+  section_id: 2
