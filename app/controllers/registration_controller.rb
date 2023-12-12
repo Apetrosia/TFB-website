@@ -5,14 +5,8 @@ class RegistrationController < ApplicationController
   end
 
   def create
-    params = user_params
 
-    new_user = User.new
-    new_user.login = params[:login]
-    new_user.email = params[:email]
-    new_user.password = params[:password]
-    new_user.banned = false
-    new_user.password_confirmation = params[:password_confirmation] 
+    new_user = User.create(user_params)
 
     if new_user.save
       session[:user_id] = new_user.id
