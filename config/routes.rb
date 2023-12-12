@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   post   "/auth", to: "auth#create"
   delete "/auth", to: "auth#destroy"
 
-  resources :users, controller: 'personal_cabinet', only: [:index] do
+  resources :users, controller: 'personal_cabinet', only: [:show] do
     patch 'new_photo', to: "personal_cabinet#change_photo", on: :member
   end
 
