@@ -1,4 +1,12 @@
 class PersonalCabinetController < ApplicationController
-  def index
+  def show
+
   end
+
+  def change_photo
+
+  end
+
+
+
 end
