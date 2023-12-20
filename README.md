@@ -2,7 +2,7 @@
 
 - Authorization
 - Forum
-- Bag-report
+- Bug-report
 
 ## Running in development
 
