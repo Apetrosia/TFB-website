@@ -1,14 +1,21 @@
 class LikesController < ApplicationController
 
+  before_action :find_comment
+
   def create
-    like = Comment.find_by_id(params[:comment_id]).likes.create(user_id: session[:user_id])
-    redirect_to section_topic_path(params[:section_id], params[:topic_id])
+    @like = @comment.likes.create(user_id: current_user.id)
+    redirect_to section_topic_comment_path(@comment.topic.section, @comment.topic, @comment)
   end
 
   def destroy
-    like = Like.find_by_id(params[:id])
-    like.destroy
-    redirect_to section_topic_path(params[:section_id], params[:topic_id])
+    @like = @comment.likes.find(params[:id])
+    @like.destroy
+    redirect_to section_topic_comment_path(@comment.topic.section, @comment.topic, @comment)
   end
 
+  private
+
+  def find_comment
+    @comment = Comment.find(params[:comment_id])
+  end
 end

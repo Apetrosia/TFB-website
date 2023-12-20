@@ -25,17 +25,13 @@ Rails.application.routes.draw do
     patch 'new_photo', to: "personal_cabinet#change_photo", on: :member
   end
 
-  # get "/forum", to: "forum#index"
-
-  resources :sections, controller: 'forum', only: [:index] do
-    resources :topics, controller: 'forum', only: [:show] do
-      resources :comments, only: [:create, :destroy] do
-        resources :likes, only: [:create, :destroy]
-      end
+  resources :sections, only: [:index, :show] do
+    resources :topics, only: [:show] do
+      resources :comments, only: [:create, :destroy]
     end
   end
 
-  get "/sections/:section_id/topics", to: "forum#index_topics", as: "section_topics"
+  resources :likes, only: [:create, :destroy]
 
   get "/info", to: "info#index"
 
