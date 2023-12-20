@@ -8,19 +8,20 @@ class UserTest < ActiveSupport::TestCase
   end
 
   def test_has_id
-    user = User.create(login: "test", email: "test", password_digest: "test")
+    user = User.create(login: "test", email: "test@test.test", password_digest: "test")
     assert_not_nil user.id, "Doesn't have id"
   end
 
   def test_can_be_banned
-    user = User.create(login: "test", email: "test", password_digest: "test")
+    user = User.create(login: "test", email: "test@test.test", password_digest: "test")
     assert_not user.banned?, "Initializes new user as banned"
     user.update(banned: true)
     assert user.banned?, "Can't ban user"
   end
 
+  # TODO: implement admin role for user
   # def test_can_be_admin
-  #   user = User.create(login: "test", email: "test", password_digest: "test")
+  #   user = User.create(login: "test", email: "test@test.test", password_digest: "test")
   #   assert_not user.admin?, "Initializes new user as admin"
   #   user.update(admin: true)
   #   assert user.admin?, "Can't make user an admin"
@@ -49,6 +50,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 1, user.topics.size, "Does not create topic"
   end
 
+  # FIXME: change title to text in comment model
   def test_can_have_many_comments
     user = User.create(login: "test", email: "test@test.test", password_digest: "test")
     assert_empty user.comments, "Comments are not empty"

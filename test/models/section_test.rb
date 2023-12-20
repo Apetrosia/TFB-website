@@ -1,5 +1,5 @@
 require 'test_helper'
-
+# FIXME: add section to database
 class SectionTest < ActiveSupport::TestCase
   def test_should_not_save_without_params
     section = Section.new
