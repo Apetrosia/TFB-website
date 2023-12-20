@@ -1,4 +1,10 @@
 class SectionsController < ApplicationController
+
+  def create
+    section = Section.create(section_params)
+    # render :index ?
+  end
+
   def index
     @sections = Section.all
   end
@@ -8,9 +14,15 @@ class SectionsController < ApplicationController
     @topics = section.topics
   end
 
+  def destroy
+    section = Section.find(section_params[:id])
+    section.destroy
+    redirect_to sections_path
+  end
+
   private
   def section_params
-    params.require(:section).permit(:id)
+    params.require(:section).permit(:id, :title)
   end
 
 end

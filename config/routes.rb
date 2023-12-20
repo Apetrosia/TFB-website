@@ -25,8 +25,8 @@ Rails.application.routes.draw do
     patch 'new_photo', to: "personal_cabinet#change_photo", on: :member
   end
 
-  resources :sections, only: [:index, :show] do
-    resources :topics, only: [:show] do
+  resources :sections, only: [:index, :create, :show, :destroy] do
+    resources :topics, only: [:create, :show, :destroy] do
       resources :comments, only: [:create, :destroy]
     end
   end
