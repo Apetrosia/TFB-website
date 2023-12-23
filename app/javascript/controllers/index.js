@@ -4,3 +4,6 @@
 
 import { application } from "./application"
 
+import SectionsController from "./sections_controller"
+application.register("sections", SectionsController)
+

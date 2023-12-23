@@ -57,7 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_22_105131) do
     t.string "login", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
-    t.boolean "banned"
+    t.boolean "banned", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "email_conf"
