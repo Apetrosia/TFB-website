@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_08_163207) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_22_105131) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
     t.text "title", null: false
     t.bigint "user_id"
-    t.integer "like_count"
+    t.integer "like_count", default: 0
     t.integer "prt_cmt_id"
-    t.integer "comment_rake"
+    t.integer "comment_rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "topic_id"
@@ -57,7 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_08_163207) do
     t.string "login", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
-    t.boolean "banned", default: false
+    t.boolean "banned"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "email_conf"

@@ -1,0 +1,18 @@
+databases:
+  - name: the_first_bogatyr
+    databaseName: the_first_bogatyr_production
+    user: postgres
+
+services:
+  - type: web
+    name: the_first_bogatyr
+    runtime: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: maHAdRnFXqLeTFqPWt3zriyR61Hz1tS0
+        fromDatabase:
+          name: the_first_bogatyr
+          property: connectionString
+      - key: 33022
+        sync: false
