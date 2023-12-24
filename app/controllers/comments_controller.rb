@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
   private
 
   def find_topic
-    @topic = Topic.find(params[:topic_id])
+    @topic = Topic.all.find(params[:topic_id])
   end
 
   def comment_params

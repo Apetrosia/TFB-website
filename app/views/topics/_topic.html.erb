@@ -1,0 +1,40 @@
+<% @this_topic = Topic.all.find(topicid.to_i ) %>
+<div class="flex flex-col justify-between" style="height: 82vh ">
+  <div class="  flex flex-col bg-pale-yellow border-b-2 border-b-green-950 border-0 overflow-y-auto rounded-t-md">
+    <div class="text-black text-left text-xl font-serif font-semibold mt-2 mx-4">
+      <%= @this_topic.title %>
+    </div>
+    <div class="mt-4 mx-4 mb-3">
+      <%= @this_topic.content %>
+    </div>
+  </div>
+  <div class="grow border-grassy-green scroll-smooth">
+    <div>
+      <p> aaaaa </p>
+    </div>
+  </div>
+  <%= form_for :comment, url: "/sections/:#{@this_topic.section_id}/topics/:#{@this_topic.id}/comments" do |f| %>
+    <div class="min-h-20 bg-pale-yellow rounded-xl m-4 items-center flex-row  border-grassy-green flex  ">
+      <div class="rounded-full flex grow-0 mx-6">
+        <%= image_tag 'icon_bread.jpg', size: 50, class: "rounded-full" %>
+      </div>
+
+
+
+        <div class="grow justify-stretch items-stretch flex border-grassy-green border-2 ">
+          <label hidden="hidden" for="com" class="relative"></label>
+          <div>
+
+            <textarea id="com"> </textarea>
+          </div>
+        </div>
+
+        <div class="justify-end items-end mr-4">
+          <%= image_submit_tag 'icon-send.png', size: 5 %>
+        </div>
+
+
+    </div>
+  <% end %>
+
+</div>

@@ -4,6 +4,15 @@
 
 import { application } from "./application"
 
+import InfoController from "./info_controller"
+application.register("info", InfoController)
+
+import info_controller from "./info_controller";
+
 import SectionsController from "./sections_controller"
 application.register("sections", SectionsController)
+
+
+import Personal_cabinet_controller from "./personal_cabinet_controller"
+application.register("personal_cabinet", Personal_cabinet_controller)
 

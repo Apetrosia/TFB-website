@@ -7,7 +7,6 @@
       </div>
       <div class=" bg-white rounded-md my-4 mx-2 p-2 ml-4">
         <div>
-
           <div>
             <button data-sections-target="but" > aaaa </button>
           </div>
@@ -30,8 +29,6 @@
                 <% end %>
               </div>
 
-
-
             </div>
           <% end %>
         </div>
@@ -39,8 +36,8 @@
     </div>
 
     <div class="basis-4/5 border-2 border-grassy-green bg-white rounded-md  my-4 mx-2 mr-4 ">
-      <label hidden="hidden"><% @title_id = capture do %>5<% end %></label>
-      <%= render partial: 'sections/topic', locals: { topicid: @title_id } %>
+      <label hidden="hidden"><% @topic_id = capture do %>5<% end %></label>
+      <%= render partial: 'topics/topic', locals: { topicid: @topic_id } %>
 
     </div>
   </div>
