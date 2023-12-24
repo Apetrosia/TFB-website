@@ -6,7 +6,8 @@ class PersonalCabinetController < ApplicationController
   end
 
   def change_photo
-    @user.avatar.attach(params[:avatar])
+    @user.avatar.attach(user_params[:avatar])
+    redirect_to user_path(session[:user_id])
   end
 
   private
@@ -15,7 +16,7 @@ class PersonalCabinetController < ApplicationController
   end
 
   def find_user
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
   end
 
 end
