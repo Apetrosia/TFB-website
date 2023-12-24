@@ -11,11 +11,12 @@ class PersonalCabinetUsageTest < ActionDispatch::IntegrationTest
     bob = log_in(user_tag: :bob, pass: "1234")
     bob.follow_redirect!
     assert_equal 200, bob.status
-    # assert_equal users_path, bob.path
+    assert_equal root_path, bob.path
 
     bob.get user_path(bob.session[:user_id])
+    assert_equal 200, bob.status
 
-    avatar_image = fixture_file_upload(users(:bob).avatar, 'image/jpeg')
+    avatar_image = fixture_file_upload('avatar.jpg', 'image/jpeg')
 
     bob.patch new_photo_user_path(bob.session[:user_id]), params: { user: { avatar: avatar_image } }
 
@@ -24,12 +25,8 @@ class PersonalCabinetUsageTest < ActionDispatch::IntegrationTest
     # проверка того, что у боба есть фото в базе
     assert_equal true, users(:bob).reload.avatar.attached?
 
-    bob.follow_redirect!
-
     # проверка, что отображается то фото
     assert_select "img[src*='avatar.jpg']"
-
-    assert_select "img[src*='#{users(:bob).avatar.filename}']"
   end
 
   test "change_password" do

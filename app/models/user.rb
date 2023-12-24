@@ -11,7 +11,8 @@ class User < ApplicationRecord
     has_one_attached :avatar
     validate :correct_avatar_file_type
     validate :acceptable_image_size
-    def correct_pfp_file_type
+
+    def correct_avatar_file_type
         if avatar.attached? && !avatar.content_type.in?(%w(image/jpeg image/png))
             errors.add(:avatar, 'Файл должен быть в формате JPEG или PNG')
         end
