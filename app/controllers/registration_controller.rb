@@ -16,7 +16,6 @@ class RegistrationController < ApplicationController
       gen_text_for_errors(new_user.errors)
       render :new
     end
-
   end
 
   def edit
