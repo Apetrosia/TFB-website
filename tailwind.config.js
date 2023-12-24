@@ -1,12 +1,22 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
+const execSync = require('child_process').execSync;
+const gemPath = execSync('bundle show activeadmin', { encoding: 'utf-8' }).trim();
+
 module.exports = {
   content: [
     './public/*.html',
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
-    './app/views/**/*.{erb,haml,html,slim}'
+    './app/views/**/*.{erb,haml,html,slim, arb, rb}',
+    './node_modules/flowbite/**/*.js',
+    `${gemPath}/plugin.js`,
+    `${gemPath}/app/views/**/*.{arb,erb,html,rb}`,
+    `${gemPath}/lib/active_admin/**/*.rb`,
+    './app/admin/**/*.{arb,erb,html,rb}',
+    './app/assets/stylesheets/**/*.css'
   ],
+
   theme: {
     colors: {
       transparent: 'transparent',
@@ -46,8 +56,9 @@ module.exports = {
       },
     },
   },
+  darkMode: "class",
   plugins: [
-    require('@tailwindcss/forms')
+    require('@tailwindcss/forms'),
+    require(`${gemPath}/plugin`)
   ]
-
 }
