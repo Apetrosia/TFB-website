@@ -21,12 +21,17 @@ Rails.application.routes.draw do
   post   "/auth", to: "auth#create"
   delete "/auth", to: "auth#destroy"
 
-  get "/user/:id", to: "personal_cabinet#index"
+  resources :users, controller: 'personal_cabinet', only: [:show] do
+    patch 'new_photo', to: "personal_cabinet#change_photo", on: :member
+  end
 
-  get  "/user/:id/photo/new", to: "photo#new"
-  post "/user/:id/photo/new", to: "photo#update"
+  resources :sections, only: [:index, :create, :show, :destroy] do
+    resources :topics, only: [:create, :show, :destroy] do
+      resources :comments, only: [:create, :destroy]
+    end
+  end
 
-  get "/forum", to: "forum#index"
+  resources :likes, only: [:create, :destroy]
 
   get "/info", to: "info#index"
 
