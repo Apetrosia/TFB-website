@@ -10,6 +10,10 @@ class PersonalCabinetController < ApplicationController
     redirect_to user_path(session[:user_id])
   end
 
+  def change_password
+    redirect_to registration_new_password_path
+  end
+
   private
   def user_params
     params.require(:user).permit(:login, :email, :password, :avatar)
