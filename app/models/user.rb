@@ -7,7 +7,6 @@ class User < ApplicationRecord
 
     before_create :generate_confirmation_token
 
-    private
     def generate_confirmation_token
         self.email_token = SecureRandom.urlsafe_base64
     end

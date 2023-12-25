@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   get  "/email_verification", to: "email#new" # for email verification UI
   post "/email_verification", to: "email#create" # for button "verify"
+  get  "/email_confirmation", to: "email#confirm"
 
   get    "/auth", to: "auth#new"
   post   "/auth", to: "auth#create"
