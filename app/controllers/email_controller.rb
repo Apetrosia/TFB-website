@@ -13,7 +13,7 @@ class EmailController < ApplicationController
   def confirm
     user = User.find_by_email_token params[:token]
     if user.present?
-      user.email_token = true
+      user.email_conf = true
       user.save
       redirect_to root_path
     else
