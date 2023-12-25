@@ -5,7 +5,9 @@ export default class extends Controller {
 
 
     initialize() {
+        alert("aaaaa");
         this.tgTarget.hidden = true;
+
     }
 
     clickButton() {

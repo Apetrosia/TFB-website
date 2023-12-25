@@ -4,24 +4,22 @@ export default class extends Controller {
     static targets = ["topic", "but"]
     static values = { sectionid:  Number}
 
-    connect(){
-        console.log("Hello ");
-    }
+
     initialize() {
+        alert("controller connected");
         this.butTarget.hidden = true;
-        this.topicTargets.hidden = true;
+
     }
 
     clickOnSection({params: {sectid}}) {
-        this.topicTargets.forEach( (elem) => {
-            if ( elem.sectionidValue == sectid)
-            {
+        for (let i = 0; i < this.topicTargets.length; i++) {
+            var elem = this.topicTargets[i];
+            if (elem.sectionidValue == sectis) {
                 if (elem.hidden)
-                    elem.hidden = false
+                    elem.hidden = false;
                 else
-                    elem.hidden = true
+                    elem.hidden = true;
             }
-
-        })
+        }
     }
 }

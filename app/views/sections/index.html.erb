@@ -11,7 +11,7 @@
             <button data-sections-target="but" > aaaa </button>
           </div>
 
-          <%- Section.all.each do |sect| %>
+          <%- Section.preload(:topics).all.each do |sect| %>
             <div>
 
               <div class="m-0.5 p-0.5 border-b-gray-400 hover:border-b-gray-600 border-b-2">
@@ -19,10 +19,11 @@
                   <%= sect.title %>
                 </button>
               </div>
+
               <div class="mt-1" >
                 <%- sect.topics.each do |topic| %>
-                  <div data-sections-target="topic" data-sections-sectionid-value="<%= sect.id %>" class="m-0.5 ml-2 p-0.5  hover:bg-neutral-100">
-                    <button class="w-full text-left text-l font-serif">
+                  <div hidden="hidden" data-sections-target="topic" data-sections-sectionid-value="<%= sect.id %>" class="m-0.5 ml-2 p-0.5  hover:bg-neutral-100">
+                    <button id="<%= topic.id %>" class="w-full text-left text-l font-serif">
                       <%= topic.title %>
                     </button>
                   </div>

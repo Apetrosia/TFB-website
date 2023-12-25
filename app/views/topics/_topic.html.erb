@@ -13,7 +13,7 @@
       <p> aaaaa </p>
     </div>
   </div>
-  <%= form_for :comment, url: "/sections/:#{@this_topic.section_id}/topics/:#{@this_topic.id}/comments" do |f| %>
+  <%= form_for :comment, url: "/sections/#{@this_topic.section_id}/topics/#{@this_topic.id}/comments" do |f| %>
     <div class="min-h-20 bg-pale-yellow rounded-xl m-4 items-center flex-row  border-grassy-green flex  ">
       <div class="rounded-full flex grow-0 mx-6">
         <%= image_tag 'icon_bread.jpg', size: 50, class: "rounded-full" %>
@@ -25,7 +25,8 @@
           <label hidden="hidden" for="com" class="relative"></label>
           <div>
 
-            <textarea id="com"> </textarea>
+            <input id="com" name="[comment]title">
+
           </div>
         </div>
 
