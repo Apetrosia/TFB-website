@@ -1,13 +1,17 @@
+
+<%- if flash.any? %>
+  <%= render 'layouts/alert', locals: flash[:error] %>
+<% end %>
+
 <div class="flex mt-20 min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+
   <div class="sm:mx-auto sm:w-full sm:max-w-sm">
     <h6 class="mt-10 text-3xl font-bold text-center justify-center leading-9 ">
       Вход
     </h6>
   </div>
   
-  <%- if flash.any? %>
-    <%= render 'layouts/alert', locals: flash[:error] %>
-  <% end %>
+
   <div class="flex space-y-6 justify-center mt-10">
     <%= form_for :user, url: '/auth' do |f| %>
       <div class="flex-col justify-center">

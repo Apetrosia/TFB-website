@@ -3,7 +3,8 @@ class CommentsController < ApplicationController
   before_action :find_topic
 
   def create
-    comment = @topic.comments.create(comment_params)
+    comment = @topic.comments.create(comment_params.merge({user_id: current_user.id }))
+    puts comment.errors.inspect
     redirect_to section_topic_path(@topic.section_id, @topic)
   end
 
@@ -20,6 +21,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:section_id, :topic_id, :id, :content, :user_id, :parent_comment_id)
+    params.require(:comment).permit(:section_id, :topic_id, :id, :title, :user_id, :parent_comment_id)
   end
 end

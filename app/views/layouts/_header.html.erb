@@ -10,18 +10,22 @@
         <div class="flex m-4 font-serif text-pale-yellow text-xl font-bold  hover:underline-offset-0">
           <a href="/news" class="  rounded-md relative m-4 hover:text-white hover:underline-offset-8 ">Новости</a>
           <a href="/wiki" class=" relative hover:text-white m-4">Вики</a>
-          <a href="/forum" class="relative hover:text-white  m-4">Форум</a>
-          <a href="/info" class="relative hover:text-white m-4" >О нас</a>
-          <a href="/support" class="relative hover:text-white m-4">Обратная связь</a>
+          <a href="/sections" class="relative hover:text-white  m-4">Форум</a>
+          <a href="/info" class="relative hover:text-white m-4" >О нас </a>
+          <a href="/support" class="relative hover:text-white m-4">Обратная связь  </a>
         </div>
         <div class="flex items-center justify-end m-4">
           <%- if current_user.present? %>
-            <a href="/user/:id" class="items-center">
-              <%= image_tag 'funny_ded.png', size: 40  %>
+            <a href="/users/<%= current_user.id %>" class="items-center">
+              <%- if current_user.avatar.attached? %>
+                <%= image_tag current_user.avatar.attached?  , size: 40 %>
+              <%- else  %>
+                <%= image_tag "ivan.png", size: 40 %>
+              <% end %>
             </a>
           <% else %>
             <a href="/auth" class="items-center">
-              <%= image_tag 'img.png', size: 40  %>
+              <%= image_tag 'icon-guest.png', size: 40  %>
             </a>
           <% end %>
         </div>
