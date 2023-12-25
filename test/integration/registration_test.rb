@@ -48,7 +48,7 @@ class RegistrationTest < ActionDispatch::IntegrationTest
 
     confirm_email(user1, "Vasya777")
     # проверка, что письмо дошло ...
-    user1.get "/user/#{created_user.id}" # попадаем в личный кабинет
+    user1.get user_path(created_user.id) # попадаем в личный кабинет
     assert_equal 200, user1.status
     # проверки на актуальность информации в личном кабинете ...
 
