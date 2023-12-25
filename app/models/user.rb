@@ -5,13 +5,19 @@ class User < ApplicationRecord
 
     has_secure_password
 
+    before_create :generate_confirmation_token
+
+    def generate_confirmation_token
+        self.email_token = SecureRandom.urlsafe_base64
+    end
+
     has_many :topics
     has_many :comments
 
     has_one_attached :avatar
     validate :correct_avatar_file_type
     validate :acceptable_image_size
-    def correct_pfp_file_type
+    def correct_avatar_file_type
         if avatar.attached? && !avatar.content_type.in?(%w(image/jpeg image/png))
             errors.add(:avatar, 'Файл должен быть в формате JPEG или PNG')
         end
