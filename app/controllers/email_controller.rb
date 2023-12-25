@@ -10,6 +10,18 @@ class EmailController < ApplicationController
       #end
   end
 
+  def confirm
+    user = User.find_by_email_token params[:token]
+    if user.present?
+      user.email_token = true
+      user.save
+      redirect_to root_path
+    else
+      #redirect_to root_path
+      raise ActionController::RoutingError.new("Not Found")
+    end
+  end
+
   def show
   end
 end
