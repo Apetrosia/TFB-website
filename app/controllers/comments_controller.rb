@@ -3,9 +3,16 @@ class CommentsController < ApplicationController
   before_action :find_topic
 
   def create
-    comment = @topic.comments.create(comment_params.merge({user_id: current_user.id }))
-    puts comment.errors.inspect
-    redirect_to section_topic_path(@topic.section_id, @topic)
+    if current_user.present?
+      if current_user.email_conf
+        comment = @topic.comments.create(comment_params.merge({ user_id: current_user.id }))
+        redirect_to section_topic_path(@topic.section_id, @topic)
+      else
+        flash.alert = "Подтвердите, пожалуйста, вашу почту"
+      end
+    else
+      flash.alert = "К сожалению, отправка комментариев доступна только зарегестрированным пользователям"
+    end
   end
 
   def destroy
