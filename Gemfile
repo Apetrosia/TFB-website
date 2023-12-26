@@ -5,6 +5,12 @@ ruby "3.2.2"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4"
 
+gem 'activeadmin'
+
+gem 'devise'
+
+gem 'sass-rails'
+
 #gem "factory_bot_rails"
 gem "factory_bot_rails"
 
