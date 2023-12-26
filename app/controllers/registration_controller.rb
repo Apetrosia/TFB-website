@@ -16,13 +16,21 @@ class RegistrationController < ApplicationController
       gen_text_for_errors(new_user.errors)
       render :new
     end
-
   end
 
   def edit
   end
 
   def update
+    user = User.find_by(id :session[:user_id])
+    if user.nil?
+      redirect_to auth_path, alert: "Вы должны быть авторизованы"
+    end
+    if user.update(user_params)
+      redirect_to user_path, notice: "Пароль обновлен"
+    else
+      render :edit
+    end
   end
 
   private
@@ -34,13 +42,18 @@ class RegistrationController < ApplicationController
 
     error = errors.first
     case error.type
+    when :blank
+      flash.now[:error] = "Введите логин" if error.attribute == :login
+      flash.now[:error] = "Введите email" if error.attribute == :email
+      flash.now[:error] = "Введите пароль" if error.attribute == :password_digest
+      flash.now[:error] = "Подтвердите пароль" if error.attribute == :password_confirmation
     when :taken
       flash.now[:error] = "Такой логин уже занят" if error.attribute == :login
       flash.now[:error] = "Такой email уже занят" if error.attribute == :email
     when :invalid
       flash.now[:error] = "Введен некорректный email" if error.attribute == :email
     when :confirmation
-      flash.now[:error] = "Подтверждение пароля не совпадает с паролем" if error.attribute == :password_confirmation
+      flash.now[:error] = "Повтор пароля не совпадает с паролем" if error.attribute == :password_confirmation
     else
       raise "Необработанная ошибка ввода"
     end

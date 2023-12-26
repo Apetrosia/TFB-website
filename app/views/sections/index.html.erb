@@ -1,0 +1,45 @@
+<div data-controller="sections" class="h-screen w-full bg-pale-green">
+  <%= render 'layouts/header' %>
+  <div class="flex flex-row" >
+    <div class="basis-1/5 flex flex-col">
+      <div class="text-4xl font-serif font-bold text-green-950 mt-4 ml-6">
+        <p>Обсуждения</p>
+      </div>
+      <div class=" bg-white rounded-md my-4 mx-2 p-2 ml-4">
+        <div>
+          <div>
+            <button data-sections-target="but" > aaaa </button>
+          </div>
+
+          <%- Section.preload(:topics).all.each do |sect| %>
+            <div>
+
+              <div class="m-0.5 p-0.5 border-b-gray-400 hover:border-b-gray-600 border-b-2">
+                <button data-action="click->sections#clickOnSection" data-sections-sectid-param="<%= sect.id %>" class=" w-full text-left text-xl font-serif" >
+                  <%= sect.title %>
+                </button>
+              </div>
+
+              <div class="mt-1" >
+                <%- sect.topics.each do |topic| %>
+                  <div hidden="hidden" data-sections-target="topic" data-sections-sectionid-value="<%= sect.id %>" class="m-0.5 ml-2 p-0.5  hover:bg-neutral-100">
+                    <button id="<%= topic.id %>" class="w-full text-left text-l font-serif">
+                      <%= topic.title %>
+                    </button>
+                  </div>
+                <% end %>
+              </div>
+
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="basis-4/5 border-2 border-grassy-green bg-white rounded-md  my-4 mx-2 mr-4 ">
+      <label hidden="hidden"><% @topic_id = capture do %>5<% end %></label>
+      <%= render partial: 'topics/topic', locals: { topicid: @topic_id } %>
+
+    </div>
+  </div>
+</div>
